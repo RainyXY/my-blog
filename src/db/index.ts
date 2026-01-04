@@ -17,12 +17,12 @@ export const createBlog = async (userId: string, title: string, blog_id: string,
 	}
 };
 
-export const getBlog = async (blogId: number) => {
+export const getBlog = async (blogId: string) => {
 	try {
 		const blog = await db
 			.select()
 			.from(blogsTable)
-			.where(and(eq(blogsTable.id, blogId)));
+			.where(and(eq(blogsTable.blog_id, blogId)));
 		if (blog.length === 0) {
 			return null;
 		}

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 		//1.创建一个blog
 		const newBlog = await createBlog(userId,title, blog_id, content, excerpt);
 		//2.返回blog id
-		return new Response(JSON.stringify({ id: newBlog?.id }), {
+		return new Response(JSON.stringify({ blog_id: newBlog?.blog_id }), {
 			status: 200,
 		});
 	}
