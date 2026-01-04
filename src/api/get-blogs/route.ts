@@ -1,7 +1,7 @@
 import { getBlogs } from '@/db';
 import { auth } from '@clerk/nextjs/server';
 
-export async function POST(req: Request) {
+export async function GET() {
 	const { userId } = await auth();
 	if (userId) {
 		const blogs = await getBlogs();

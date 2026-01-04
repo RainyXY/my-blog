@@ -4,8 +4,17 @@ import { getBlogs } from '@/db';
 import type { BlogModel } from '@/db/schema';
 
 export default async function Home() {
-  const blogs = await getBlogs() || [];
-  console.log(blogs, '==========');
+  let blogs: BlogModel[] = [];
+  let error = false;
+
+  try {
+    const fetchedBlogs = await getBlogs();
+    blogs = fetchedBlogs || [];
+  } catch (err) {
+    console.error('Failed to fetch blogs:', err);
+    error = true;
+  }
+
   return (
     <div className="px-4 py-8">
       <section className="mb-12">
@@ -20,11 +29,17 @@ export default async function Home() {
 
       <section>
         <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-300 mb-8 text-center">最新文章</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((post: BlogModel) => (
-            <BlogPostCard key={post.id} post={post} />
-          ))}
-        </div>
+        {error ? (
+          <div className="text-center text-gray-500">
+            无法加载博客文章，请稍后重试。
+          </div>
+        ) : (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {blogs.map((post: BlogModel) => (
+              <BlogPostCard key={post.id} post={post} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
