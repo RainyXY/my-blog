@@ -2,8 +2,8 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { sepolia } from 'wagmi/chains';
 
 export const config = getDefaultConfig({
-	appName: 'my_blog',
-	projectId: '066569847d951e6fe2625eb6ab6e967e',
+	appName: 'my-blog',
+	projectId: 'prj_dC91jKYmsPfJawamOCc52Sx5xvWP',
 	chains: [sepolia],
 	ssr: true,
 });
