@@ -1,19 +1,32 @@
-import Link from 'next/link';
-import { BlogPostCard } from '../components/BlogPostCard';
-import { getBlogs } from '@/db';
-import type { BlogModel } from '@/db/schema';
+'use client'
 
-export default async function Home() {
-  let blogs: BlogModel[] = [];
-  let error = false;
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Link from 'next/link'
+import { BlogPostCard } from '../components/BlogPostCard'
+import type { BlogModel } from '@/db/schema'
 
-  try {
-    const fetchedBlogs = await getBlogs();
-    blogs = fetchedBlogs || [];
-  } catch (err) {
-    console.error('Failed to fetch blogs:', err);
-    error = true;
-  }
+export default function Home() {
+  const [blogs, setBlogs] = useState<BlogModel[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setLoading(true)
+        const response = await axios.get('/api/get-blogs')
+        setBlogs(response.data || [])
+      } catch (err) {
+        console.error('Failed to fetch blogs:', err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchBlogs()
+  }, [])
 
   return (
     <div className="px-4 py-8">
@@ -29,9 +42,17 @@ export default async function Home() {
 
       <section>
         <h2 className="text-2xl font-bold text-purple-700 dark:text-purple-300 mb-8 text-center">最新文章</h2>
-        {error ? (
+        {loading ? (
+          <div className="text-center text-gray-500">
+            加载中...
+          </div>
+        ) : error ? (
           <div className="text-center text-gray-500">
             无法加载博客文章，请稍后重试。
+          </div>
+        ) : blogs.length === 0 ? (
+          <div className="text-center text-gray-500">
+            暂无文章
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -42,5 +63,5 @@ export default async function Home() {
         )}
       </section>
     </div>
-  );
+  )
 }

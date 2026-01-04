@@ -6,7 +6,7 @@ interface BlogPost {
   blog_id: string;
   content: string;
   excerpt: string | null;
-  createdAt: Date;
+  createdTime: Date;
 }
 
 interface BlogPostCardProps {
@@ -27,7 +27,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
     <div className="border border-purple-100 dark:border-purple-800/50 rounded-lg overflow-hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-md hover:shadow-xl transition-all duration-300 hover:border-purple-300 dark:hover:border-purple-500 hover:scale-[1.02]">
       <div className="p-5">
         <div className="text-sm text-purple-600 dark:text-purple-400 mb-1">
-          {formatDate(post.createdAt.toISOString())}
+          {formatDate(post.createdTime.toString())}
         </div>
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2  transition-colors">{post.title}</h3>
         <p className="text-gray-600 dark:text-gray-400 mb-4">{post.excerpt || post.content.substring(0, 150) + "..."}</p>
