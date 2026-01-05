@@ -1,38 +1,38 @@
 {
-  "name": "my-blog",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@clerk/nextjs": "^6.36.5",
-    "@metamask/sdk": "^0.34.0",
-    "@rainbow-me/rainbowkit": "^2.2.10",
-    "@tanstack/react-query": "^5.90.16",
-    "axios": "^1.13.2",
-    "dotenv": "^17.2.3",
-    "drizzle-orm": "^0.45.1",
-    "next": "16.1.1",
-    "postgres": "^3.4.7",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "viem": "^2.43.5",
-    "wagmi": "^3.1.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "drizzle-kit": "^0.31.8",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "tsx": "^4.21.0",
-    "typescript": "^5"
-  }
+    "name": "my-blog",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "@clerk/nextjs": "^6.36.5",
+        "@metamask/sdk": "^0.34.0",
+        "@rainbow-me/rainbowkit": "^2.2.10",
+        "@tanstack/react-query": "^5.90.16",
+        "axios": "^1.13.2",
+        "dotenv": "^17.2.3",
+        "drizzle-orm": "^0.45.1",
+        "next": "16.1.1",
+        "postgres": "^3.4.7",
+        "react": "19.2.3",
+        "react-dom": "19.2.3",
+        "viem": "^2.43.5",
+        "wagmi": "^2.12.7"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "drizzle-kit": "^0.31.8",
+        "eslint": "^9",
+        "eslint-config-next": "16.1.1",
+        "tailwindcss": "^4",
+        "tsx": "^4.21.0",
+        "typescript": "^5"
+    }
 }
